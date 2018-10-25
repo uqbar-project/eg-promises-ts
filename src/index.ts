@@ -8,6 +8,8 @@ const sumaEdades = suma(edades)
 const totalEdades = longitud(edades)
 console.log('Promedio de edades es: ', sumaEdades / totalEdades)
 
+
+
 // Funciones asincrónicas
 a_getAlumnos().then(
     (alumnos: any[]) => {

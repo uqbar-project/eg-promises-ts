@@ -14,7 +14,7 @@ export function edad(alumno: any) : number {
 }
 
 // suma una lista de números
-export function suma(lista: any[]) : number {
+export function suma(lista: number[]) : number {
     return lista.reduce((acum, each) => { return acum + each }, 0)
 }
 
@@ -23,8 +23,8 @@ export function longitud(lista: any[]) : number {
     return lista.length
 }
 
-export function a_getAlumnos() : Promise<any> {
-    return new Promise( (resolve) => resolve(getAlumnos()))
+export function a_getAlumnos() : Promise<any[]> {
+    return new Promise( (resolve, reject) => resolve(getAlumnos()))
     /*return new Promise( (resolve) => {
         resolve([
             { nombre: "Juan Pablo", edad: 22 },

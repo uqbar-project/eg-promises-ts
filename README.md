@@ -31,7 +31,7 @@ Las promises permiten encolar procesos asincrónicos, y su constructor espera un
 En el caso de los alumnos, recibimos el callback por el caso feliz y lo invocamos (mediante los paréntesis) pasándole como argumentos una lista de JSON que son los alumnos:
 
 ```ts
-export function a_getAlumnos() : Promise<any> {
+export function a_getAlumnos() : Promise<any[]> {
     return new Promise( (resolve) => {
         resolve([
             { nombre: "Juan Pablo", edad: 22 },

@@ -122,6 +122,6 @@ $ npm start
 ## Resumen para el manejo de asincronismo en la VM de Javascript
 Les dejamos esta tabla que muestra un breve resumen de los diferentes métodos que vimos para manejar el asincronismo dentro de la máquina virtual de Javascript, particularmente dentro de Typescript. 
 
-![async-cheatsheet]('images/async-cheatsheet.png')
+![async-cheatsheet](images/async-cheatsheet.png)
 
 Fuente: [Frontend Armory](https://github.com/frontarm/async-javascript-cheatsheet)

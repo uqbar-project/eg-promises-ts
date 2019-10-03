@@ -4,6 +4,18 @@
         "tslint:recommended"
     ],
     "jsRules": {},
-    "rules": {},
+    "rules": {
+        "semicolon": [
+            false,
+            "always"
+        ],
+        "quotemark": [
+            true,
+            "single"
+        ],
+        "max-line-length": false,
+        "no-console": false,
+        "interface-name": false
+    },
     "rulesDirectory": []
 }

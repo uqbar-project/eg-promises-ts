@@ -7,14 +7,13 @@ En este ejemplo queremos resolver el promedio de edad de alumnos de un curso. Es
 - luego sumar y saber la cantidad de elementos
 - y finalmente obtener el promedio
 
-
 ## Solución sincrónica
 
-En la solución sincrónica, todo funciona medianamente simple
+En la solución sincrónica, todo es bastante directo: envío un mensaje y obtengo una respuesta inmediata
 
 ```ts
 const edades = getAlumnos()
-    .map( (alumno: any) => edad(alumno) )
+    .map( (alumno: Alumno) => edad(alumno) )
 
 const sumaEdades = suma(edades)
 const totalEdades = longitud(edades)
@@ -105,19 +104,22 @@ export async function promedioEdadAlumnos() {
 }
 ```
 
-La llamada desde el index.ts es muy simple:
+La llamada desde el `index.ts` es muy simple:
 
 ```ts
-promedioEdadAlumnos()
+promedioEdadAlumnos()  // TODO: es asincrónico!!
 ```
-
 
 ## Cómo testear el ejemplo
 
 ```bash
-$ npm install
-$ npm start
+npm install
+npm start
 ```
+
+## Temas periféricos que ocurren en este ejemplo
+
+- [Tipo **unknown**](https://mariusschulz.com/blog/the-unknown-type-in-typescript)
 
 ## Resumen para el manejo de asincronismo en la VM de Javascript
 Les dejamos esta tabla que muestra un breve resumen de los diferentes métodos que vimos para manejar el asincronismo dentro de la máquina virtual de Javascript, particularmente dentro de Typescript. 

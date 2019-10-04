@@ -15,7 +15,8 @@
         ],
         "max-line-length": false,
         "no-console": false,
-        "interface-name": false
+        "interface-name": false,
+        "no-any": true
     },
     "rulesDirectory": []
 }

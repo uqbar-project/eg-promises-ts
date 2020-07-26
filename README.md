@@ -20,10 +20,10 @@ La función tiene una estructura de control de secuencia, conocida por todos:
 
 ```ts
 export function promedioEdadAlumnosSync(): number {
-    const edades = getAlumnos().map((alumno: Alumno) => edad(alumno))
-    const sumaEdades = suma(edades)
-    const totalEdades = longitud(edades as unknown as object[])
-    return sumaEdades / totalEdades
+  const edades = getAlumnos().map((alumno: Alumno) => edad(alumno))
+  const sumaEdades = suma(edades)
+  const totalEdades = longitud(edades as unknown as object[])
+  return sumaEdades / totalEdades
 }
 ```
 
@@ -38,7 +38,7 @@ En el caso de los alumnos, recibimos el callback por el caso feliz y lo invocamo
 
 ```ts
 export function a_getAlumnos(): Promise<Alumno[]> {
-    return new Promise((resolve) => resolve(getAlumnos()))
+  return new Promise((resolve) => resolve(getAlumnos()))
 }
 ```
 
@@ -68,7 +68,7 @@ Como resultado, es bastante más tedioso resolver el mismo requerimiento. Al inv
 
 ```ts
 promedioEdadAlumnosPromise(
-    (promedioPromise: number) => console.log('- Promedio de edades asincrónicas con promises es: ', promedioPromise)
+  (promedioPromise: number) => console.log('- Promedio de edades asincrónicas con promises es: ', promedioPromise)
 )
 ```
 
@@ -76,23 +76,23 @@ La función promedio de edad de alumnos con promises queda:
 
 ```ts
 export function promedioEdadAlumnosPromise(callback: (promedio: number) => void): void {
-    a_getAlumnos().then(
-        (alumnos: Alumno[]) => {
-            const promisesAlumnos = alumnos.map((alumno) => a_edad(alumno))
-            Promise
-                .all(promisesAlumnos)
-                .then((edades) => {
-                    return Promise.all([
-                        a_suma(edades),
-                        a_longitud(edades as unknown as object[]),
-                    ])
-                })
-                .then(([sumaEdades, cantidad]) => {
-                    const promedio = sumaEdades / cantidad
-                    callback(promedio)
-                })
-                .catch((e) => console.log('error', e))
+  a_getAlumnos().then(
+    (alumnos: Alumno[]) => {
+      const promisesAlumnos = alumnos.map((alumno) => a_edad(alumno))
+      Promise
+        .all(promisesAlumnos)
+        .then((edades) => {
+          return Promise.all([
+            a_suma(edades),
+            a_longitud(edades as unknown as object[]),
+          ])
         })
+        .then(([sumaEdades, cantidad]) => {
+          const promedio = sumaEdades / cantidad
+          callback(promedio)
+        })
+        .catch((e) => console.log('error', e))
+    })
 }
 ```
 
@@ -136,14 +136,14 @@ gracias al mecanismo `async / await` tenemos la posibilidad de generar una funci
 
 ```ts
 export async function promedioEdadAlumnosAsyncAwait(): Promise<number> {
-    const alumnos: Alumno[] = await a_getAlumnos()
-    const edades = await Promise.all(alumnos.map((alumno) => a_edad(alumno)))
-    const [sumaEdades, cantidadEdades] = await Promise.all([
-        a_suma(edades),
-        a_longitud(edades as unknown as object[]),
-    ])
-    const promedio = sumaEdades / cantidadEdades
-    return promedio
+  const alumnos: Alumno[] = await a_getAlumnos()
+  const edades = await Promise.all(alumnos.map((alumno) => a_edad(alumno)))
+  const [sumaEdades, cantidadEdades] = await Promise.all([
+    a_suma(edades),
+    a_longitud(edades as unknown as object[]),
+  ])
+  const promedio = sumaEdades / cantidadEdades
+  return promedio
 }
 ```
 
@@ -153,8 +153,8 @@ La llamada desde el `index.ts` es muy simple:
 
 ```ts
 promedioEdadAlumnosAsyncAwait()
-    .then((promedioAA: number) => console.log('- Promedio de edades con async/await es: ', promedioAA))
-    .catch((e) => console.log('Error en el async / await!', e))
+  .then((promedioAA: number) => console.log('- Promedio de edades con async/await es: ', promedioAA))
+  .catch((e) => console.log('Error en el async / await!', e))
 ```
 
 Claro, requiere que la envolvamos en una promise porque es una función asincrónica. Podríamos hacer dentro de index, ésto:
@@ -163,8 +163,8 @@ Claro, requiere que la envolvamos en una promise porque es una función asincró
 imprimirPromedioEdadAlumnos()
 
 async function imprimirPromedioEdadAlumnos() {
-    const promedio = await promedioEdadAlumnos()
-    console.log('- Promedio de edades con async/await es: ' + promedio)
+  const promedio = await promedioEdadAlumnos()
+  console.log('- Promedio de edades con async/await es: ' + promedio)
 }
 ```
 
@@ -191,8 +191,8 @@ y ojo, respuesta es **una Promise de algo, no ese algo**.
 
 ```ts
 async funcionGeneral(param) {
-    const result = await funcion1(param)
-    await funcion2(result)
+  const result = await funcion1(param)
+  await funcion2(result)
 }
 ```
 

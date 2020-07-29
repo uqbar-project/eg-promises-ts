@@ -1,5 +1,7 @@
 # Ejemplo básico de promises
 
+[![Build Status](https://travis-ci.org/uqbar-project/eg-promises-alumnos-ts.svg?branch=master)](https://travis-ci.org/uqbar-project/eg-promises-alumnos-ts)
+
 En este ejemplo queremos resolver el promedio de edad de alumnos de un curso. Esto implica
 
 - obtener la lista de alumnos

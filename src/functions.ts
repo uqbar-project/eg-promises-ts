@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export interface Alumno {
   nombre: string,
   edad: number,
@@ -24,7 +25,7 @@ export function suma(lista: number[]): number {
 }
 
 // longitud de una lista de números
-export function longitud(lista: object[]): number {
+export function longitud(lista: unknown[]): number {
   return lista.length
 }
 
@@ -46,7 +47,7 @@ export function a_suma(lista: number[]): Promise<number> {
   return new Promise((resolve) => resolve(suma(lista)))
 }
 
-export function a_longitud(lista: object[]): Promise<number> {
+export function a_longitud(lista: unknown[]): Promise<number> {
   return new Promise((resolve) => resolve(longitud(lista)))
 }
 
@@ -57,7 +58,7 @@ export function a_longitud(lista: object[]): Promise<number> {
 export function promedioEdadAlumnosSync(): number {
   const edades = getAlumnos().map((alumno: Alumno) => edad(alumno))
   const sumaEdades = suma(edades)
-  const totalEdades = longitud(edades as unknown as object[])
+  const totalEdades = longitud(edades as unknown[])
   return sumaEdades / totalEdades
 }
 
@@ -70,7 +71,7 @@ export function promedioEdadAlumnosPromise(callback: (promedio: number) => void)
         .then((edades) => {
           return Promise.all([
             a_suma(edades),
-            a_longitud(edades as unknown as object[]),
+            a_longitud(edades as unknown[]),
           ])
         })
         .then(([sumaEdades, cantidad]) => {
@@ -86,7 +87,7 @@ export async function promedioEdadAlumnosAsyncAwait(): Promise<number> {
   const edades = await Promise.all(alumnos.map((alumno) => a_edad(alumno)))
   const [sumaEdades, cantidadEdades] = await Promise.all([
     a_suma(edades),
-    a_longitud(edades as unknown as object[]),
+    a_longitud(edades as unknown[]),
   ])
   const promedio = sumaEdades / cantidadEdades
   return promedio

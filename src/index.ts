@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { promedioEdadAlumnosAsyncAwait, promedioEdadAlumnosPromise, promedioEdadAlumnosSync } from './functions'
 
 // 1. Llamada sincrónica
@@ -14,4 +15,4 @@ promedioEdadAlumnosPromise(funcionQueHaremosCuandoTermineTodo)
 // 3. Llamada con async / await
 promedioEdadAlumnosAsyncAwait()
   .then((promedioAA) => console.log('- Promedio de edades con async/await es: ', promedioAA))
-  .catch((e) => console.log('Error en el async / await GENERAL!'))
+  .catch(() => console.log('Error en el async / await GENERAL!'))
